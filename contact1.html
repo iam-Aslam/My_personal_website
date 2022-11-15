@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation - Easy Tutorials YouTube Channel</title>
+    <link rel="stylesheet" href="stylec.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <form id="submit-form" action="">
+      <i class="fas fa-paper-plane"></i>
+
+      <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" id="contact-name" name="Name" onkeyup="validateName()" placeholder="Enter your name" required="true">
+        <span id="name-error"></span>
+      </div>
+
+      <div class="input-group">
+        <label>Phone No.</label>
+        <input type="tel" placeholder="123 456 7890" name="Phone" id="contact-phone" onkeyup="validatePhone()" required="true">
+        <span id="phone-error"></span>
+    </div>
+
+      <div class="input-group">
+        <label>Email Id</label>
+        <input type="email" placeholder="Enter Email" name="Email" id="contact-email" onkeyup="validateEmail()" required="true">
+        <span id="email-error"></span>
+    </div>   
+
+      <div class="input-group">
+        <label>Your Message</label>
+        <textarea rows="5" placeholder="Enter your message" name="Message" id="contact-message" onkeyup="validateMessage()" required="true"></textarea>
+        <span id="message-error"></span>
+    </div>
+
+    <button onclick="return validateForm()">Submit</button>
+    <span id="submit-error"></span>
+   
+  </form>
+
+
+  <div class="useful-links">
+    <a href="index.html">Go Back</a>
+  </div>
+  
+  </div>
+  <script src="script.js"></script>
+  <script>
+    $("#submit-form").submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+            url:"https://script.google.com/macros/s/AKfycbycwn6e0t9NOkObbjDhE6H-iDEYN7ZwGQ3MCqKLSuNzos6D-lWu-IvnC1WDuBY7u7LQ/exec",
+            data:$("#submit-form").serialize(),
+            method:"post",
+            success:function (response){
+                alert("Form submitted successfully")
+                window.location.reload()
+               // window.location.href="index.html"
+            },
+            error:function (err){
+                alert("Something Error")
+
+            }
+        })
+    })
+</script>
+   
+</body>
+</html>
